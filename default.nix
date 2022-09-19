@@ -73,7 +73,7 @@ let
         license = pkgs.lib.licenses.agpl3;
         doHaddock = false;
         doCheck = tests;
-        mainProgram = "echidna-test";
+        mainProgram = "echidna";
       };
 
   dapptools = pkgs.fetchFromGitHub {

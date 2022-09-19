@@ -16,10 +16,10 @@ in
     ];
   } ''
     mkdir -p $out/bin
-    cp ${echidna}/bin/echidna-test $out/bin/echidna-test
-    chmod 755 $out/bin/echidna-test
+    cp ${echidna}/bin/echidna $out/bin/echidna
+    chmod 755 $out/bin/echidna
     dylibbundler -b \
-      -x $out/bin/echidna-test \
+      -x $out/bin/echidna \
       -d $out/bin \
       -p '@executable_path'
 

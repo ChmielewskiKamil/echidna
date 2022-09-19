@@ -63,7 +63,7 @@ library:
   source-dirs: lib/
 
 executables:
-  echidna-test:
+  echidna:
     main: Main.hs
     source-dirs: src/
     dependencies: echidna
