@@ -1,12 +1,7 @@
 { pkgs ? import (builtins.fetchTarball {
-    name = "nixpkgs-unstable-2022-02-10";
-    url = "https://github.com/nixos/nixpkgs/archive/1882c6b7368fd284ad01b0a5b5601ef136321292.tar.gz";
-    sha256 = "sha256:0zg7ak2mcmwzi2kg29g4v9fvbvs0viykjsg2pwaphm1fi13s7s0i";
-  }) {},
-  newerPkgs ? import (builtins.fetchTarball {
-    name = "nixpkgs-22.05-darwin-2022-06-27";
-    url = "https://github.com/nixos/nixpkgs/archive/ce6aa13369b667ac2542593170993504932eb836.tar.gz";
-    sha256 = "sha256:0d643wp3l77hv2pmg2fi7vyxn4rwy0iyr8djcw1h5x72315ck9ik";
+    name = "nixpkgs-unstable-2022-11-14";
+    url = "https://github.com/nixos/nixpkgs/archive/dad4de1694cd92d9a0e123bfdf134d0047b836a5.tar.gz";
+    sha256 = "sha256:0zg7ak2mcmwzi2kg29g4v9fvbvs0viykjsg2pwaphm1fi13s7x0i";
   }) {},
   profiling ? false,
   tests ? false
@@ -36,7 +31,7 @@ let
 
   v = "2.0.3";
 
-  testInputs = [ newerPkgs.slither-analyzer solc ];
+  testInputs = [ pkgs.slither-analyzer solc ];
 
   f = { mkDerivation, aeson, ansi-terminal, base, base16-bytestring, binary
       , brick, bytestring, containers, data-dword, data-has, deepseq
@@ -64,7 +59,7 @@ let
         testHaskellDepends = [ tasty tasty-hunit tasty-quickcheck ];
         testToolDepends = testInputs;
         configureFlags = if profiling then [ "--enable-profiling" "--enable-library-profiling" ] else [];
-        libraryToolDepends = [ hpack newerPkgs.slither-analyzer solc ];
+        libraryToolDepends = [ hpack pkgs.slither-analyzer solc ];
         preConfigure = ''
           hpack
           # re-enable dynamic build for Linux
